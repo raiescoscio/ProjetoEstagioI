@@ -1,0 +1,75 @@
+	<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Cadastro
+    </title>
+    <link rel="stylesheet" type="text/css" href="EstiloForm.css" />
+    <script src="jquery.js" type="text/javascript"></script>
+	<script src="jquery.maskedinput.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div id ="cabecalho" > 
+	
+</div>
+
+<div id="left">
+
+	<div id="right">
+
+		<div id ="corpoform">
+			<h2 id="TituloCorpo"> Cadastre-se</h2>
+			<label><b>Nome</b><input type="text" name="campoNome" placeholder="Nome Completo" /></label>
+			<label><b>Endereço</b><input type="text" name="campoEndereco" placeholder="Endereço Completo"/></label>
+			<label><b>Usuário</b> <select id="usuario">
+				<option value="0" selected>Selecione</option>
+				<option value="D">Desembargador</option>
+				<option value="J">Juiz</option>
+				<option value="S">Servidor</option>
+			</select></label>
+			<label><b>CPF/CNPJ<span id="count"></span></b><input type="text" name="cpfcnpj" id="cpfcnpj" /> </label>
+			<label><b>Email</b><input type="email" name="campoEmail" placeholder="exemplo@email.com" /></label>
+			<label><b>Senha</b><input type="password" name="campoSenha" /></label>
+			<label><b>Confirmar Senha</b><input type="password" name="campoSenha" /></label>
+			<button class="salvar" type="submit" onclick="alert('Cadastro realizado com sucesso')" >Salvar</button>
+			<button class="cancelar" >Cancelar</button>
+				
+		</div>
+			<script type="text/javascript">
+
+				var cpfcnpj;
+
+				$('#usuario').on('change', function() {
+				  $("#cpfcnpj").val("");
+				  cpfcnpj= this.value ; // or $(this).val()
+				});
+
+				$("#cpfcnpj").keydown(function(){
+				    //try {
+				    //	$("#cpfcnpj").unmask();
+				    //  } catch (e) {}
+				    
+				    if(cpfcnpj=="S"){
+				        $("#cpfcnpj").mask("999.999.999-99");
+				    } else if(cpfcnpj=="D"|| cpfcnpj=="J"){
+				        $("#cpfcnpj").mask("99.999.999/9999-99");
+				    }                   
+				});
+
+
+			</script>
+
+		</div>
+
+</div>
+
+
+<div id ="rodape" > 
+	<p class="sobre" align="center">&copy Projeto Estágio TJ-MA | Raí Escoscio | 2016</p>
+	
+</div>
+
+</body>
+</html>
